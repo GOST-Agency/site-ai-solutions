@@ -970,8 +970,9 @@
                },
                body: JSON.stringify(data)
             })
-               .then(response => {
-                  if (response.ok) {
+               .then(response => response.json())
+               .then(data => {
+                  if (data.status === 'success') {
                      alertMessage(success);
                      document.querySelector('#form form').reset();
                   } else {
